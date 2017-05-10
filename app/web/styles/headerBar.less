@@ -1,0 +1,35 @@
+.header-bar-substrate {
+  height: 32px; // svg size;
+  box-sizing: content-box;
+  padding: @pad/2+@pad/4;
+}
+.header-bar {
+  padding: @pad/2;
+  background: @accent-background-light;
+	background: fadeout(lighten(@base,40%),5%);
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  &.fixed {
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+  }
+  .header-bar-left {
+  }
+  .header-bar-center {
+    flex-basis: 60%;
+  }
+  .header-bar-right {
+  }
+  h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+  }
+}
