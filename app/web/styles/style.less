@@ -5,9 +5,11 @@ body { padding: 0; margin: 0; background: #ccc;}
 body, button, input {
   font-family: 'PT Sans', "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
   font-size: 1em;
-  color: @basic-dark;
+  color: @text-base;
 }
-
+a {
+	color: @accent;
+}
 html, body {
 	overflow: hidden;
 	height: 100%;
@@ -33,6 +35,7 @@ html {
 	height: inherit;
 	overflow-scrolling: touch;
 	-webkit-overflow-scrolling: touch;
+	background-color: @background-base-light;
 }
 
 .dotted() {
@@ -64,36 +67,6 @@ p {
   }
 }
 @pad: 1rem;
-@success: green;
-@warning: orange;
-@danger: red;
-@basic: rgb(39, 81, 138);
-@basic-light: rgba(15,30,50,.4);
-@basic-dark: rgb(15,30,50);
-@accent: rgb(230,76,209);
-@accent-light: rgba(30,76,109,.6);
-@accent-background: @accent-light;
-@accent-background-light: lighten(@accent-light,65%);
-
-@base: rgb(39, 81, 138);
-@base: #1490E8;
-@accent: darken(spin(@base, 120%),12%);
-@accent: darken(desaturate(spin(@base, -120%),40%),4%);
-@accent: desaturate(spin(@base, 180%),15%);
-@base-light: lighten(@base,20%)
-@base-dark: darken(@base, 10%);
-
-
-@background-accent: @accent;
-@background-base: lighten(@base,60%);
-
-@text-base: desaturate(@base,10%);
-@text-inverse: lighten(@base,55%);
-@text-accent-inverse: lighten(@accent,60%);
-
-@danger: mix(@base, red, 20%);
-@success: mix(@base, green, 10%);
-@warning: mix(@base, orange, 10%);
 
 .accent-coloring() {
   background-color: @background-accent;
@@ -109,7 +82,7 @@ p {
   transition: inherit;
 }
 .main-content-wrapper  {
-  background-color: #f8fcfc;
+  background-color: @barely-white;
   transform-origin: 50% 300px;
   transition: all 100ms ease-in;
   // &::after {
@@ -162,6 +135,28 @@ header.centered {
 }
 .icon-lg {
   font-size: 2em;
+}
+.overflow-scrolling-outer {
+	@ear: @pad;
+	position: relative;
+	&::after, &::before {
+		.position(absolute);
+		z-index: 2;
+		content: '';
+		width: @ear;
+	}
+	&::after {
+		left: auto;
+		background: linear-gradient(90deg, fadeout(@background-base-light, 100%), @background-base-light);
+	}
+	&::before {
+		right: auto;
+		background: linear-gradient(-90deg, fadeout(@background-base-light, 100%), @background-base-light);
+	}
+	.overflow-scrolling {
+		padding-left: @ear;
+		padding-right: @ear;
+	}
 }
 .overflow-scrolling {
   -webkit-overflow-scrolling: touch;
@@ -219,7 +214,7 @@ header.centered {
 }
 .accent {
   color: darken(@base,15%);
-  background: @accent-background-light;
+  background: @background-accent;
   padding: 0 0.15em;
   margin-left: -0.15em;
   margin-right: -0.15em;
@@ -265,7 +260,7 @@ header.centered {
 
 // let the real CSS begin
 .react-native-web {
-  background: #fff;
+	
   // justify-content: center;
   // display: flex;
   // flex-direction: column;
@@ -419,10 +414,12 @@ header.centered {
 }
 @import "variables.less";
 @import "kek.less";
+@import "color.less";
 @import "grid.less";
 @import "grid_bootstrap.less";
 @import "modal.less";
 @import "nav.less";
+@import "breadcrumbs.less";
 @import "input.less";
 @import "sidebar.less";
 @import "card.less";

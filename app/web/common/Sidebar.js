@@ -265,7 +265,7 @@ class Sidebar extends Component {
 
       // fade overlay to match distance of drag
       overlayStyle.opacity = percentage;
-      overlayStyle.visibility = 'visible';
+      // overlayStyle.visibility = 'visible';
     } else if (this.props.docked) {
       // show sidebar
       if (this.state.sidebarWidth !== 0) {
@@ -286,8 +286,10 @@ class Sidebar extends Component {
 
       // show overlay
       overlayStyle.opacity = 1;
-      overlayStyle.visibility = 'visible';
-    }
+      // overlayStyle.visibility = 'visible';
+    } else {
+			overlayStyle.visibility = 'hidden';
+		}
 
     if (isTouching || !this.props.transitions) {
       sidebarStyle.transition = 'none';

@@ -1,25 +1,23 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { HashRouter as Router, Route, Link, withRouter } from 'react-router-dom';
 import Sidebar from '../common/Sidebar';
-import Card from '../common/Card';
 import Main from '../components/Main';
 import Test from '../components/Test';
 import ProjectPage from '../containers/ProjectPage';
-import HelloWorld from '../components/HelloWorld';
+import CampusPage from '../containers/CampusPage';
+import SidebarNavigation from '../containers/SidebarNavigation';
+import Contacts from '../components/Contacts';
 import HeaderBarSubstrate from '../components/HeaderBarSubstrate';
 
 import Header from '../containers/Header';
 import Heading from '../components/Heading';
 import AuthModal from '../containers/AuthModal';
 import Auth from '../containers/Auth';
-import NavListContainer from '../containers/NavListContainer';
 import MainWrapper from '../containers/MainWrapper';
 import ProjectsList from '../containers/ProjectsList';
 
-
-import DevTools from './DevTools';
-import { toggleColor } from '../../actions/actions';
+import { getMenuList } from '../../actions/navigation';
 import { toggleSidebar } from '../../actions/interface';
 
 class App extends Component {
@@ -28,6 +26,9 @@ class App extends Component {
     this.state = { sidebarOpen: false };
     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
   }
+	componentWillMount() {
+		this.props.getMenuList();
+	}
   onSetSidebarOpen(sidebarVisibility) {
     // this.setState({ sidebarOpen: sidebarVisibility });
     this.props.toggleSidebar();
@@ -39,6 +40,8 @@ class App extends Component {
     const sidebar = (
       <div>
         <HeaderBarSubstrate />
+				<Heading small title="Навигация" />
+				<SidebarNavigation />
         <Heading small title="Curriculum Vitae" />
         <div className="btn-group">
           <a className="btn btn-bordered" download href="/assets/files/en.pdf">
@@ -49,19 +52,6 @@ class App extends Component {
           </a>
         </div>
 
-          <Heading small title="Social Networks" />
-          <div className="nav-list">
-            <div className="nav-item nav-item-link">
-              <a className="label" href="//github.com/Carduelis" target="_blank">Github</a>
-            </div>
-            <div className="nav-item nav-item-link">
-              <a className="label" href="//vk.com/pavepy" target="_blank">Vk.com</a>
-
-            </div>
-            <div className="nav-item nav-item-link">
-              <a className="label" href="//instagram.com/Carduelis_first" target="_blank">Instagram</a>
-            </div>
-          </div>
       </div>
     );
     // <NavListContainer />
@@ -81,6 +71,8 @@ class App extends Component {
           />
           <MainWrapper>
             <Route exact path='/' component={Main} />
+            <Route path='/contacts' component={Contacts} />
+            <Route path='/campuses/:id' component={CampusPage} />
             <Route path='/news' component={Test} />
             <Route path='/projects' component={ProjectsList} />
             <Route path='/contacts' component={Auth} />
@@ -115,5 +107,5 @@ App.propTypes = {
 const select = state => state;
 
 // Wrap the component to inject dispatch and state into it
-export default connect(select, { toggleSidebar })(App);
+export default connect(select, { toggleSidebar, getMenuList })(App);
 // export default App;

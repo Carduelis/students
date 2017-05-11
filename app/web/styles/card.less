@@ -6,7 +6,11 @@
   }
   background-color: #fff;
   padding: @pad;
+	padding-right: @pad*2;
   margin: @pad/2;
+	display: block;
+	text-decoration: none;
+	color: inherit;
   border-radius: @brad;
   box-shadow: 0 1px 1px rgba(0,50,50,.15);
   border: 1px solid rgba(0,50,50,.2);
@@ -36,6 +40,18 @@
       }
     }
   }
+	&-footer {
+		margin-right: -@pad;
+	}
+	&-arrow {
+		font-size: 1em;
+		display: block;
+		line-height: 1em;
+		.position(absolute, 50%, @pad/2, auto, auto);
+		margin-top: -0.5em;
+		color: @base;
+		opacity: .4;
+	}
   &-description {
     color: #999;
   }

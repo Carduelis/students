@@ -11,6 +11,7 @@ export default class extends Component {
     const buttonProps = {
       size: 'sm',
       transparent: true,
+			type: 'primary'
     };
     const buttonGroupProps = {
       defaultButtonStyle: {

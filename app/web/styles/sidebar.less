@@ -3,7 +3,9 @@
   z-index: 9998;
   will-change: transform;
   overflow-y: auto;
-  min-width: 200px;
+  min-width: 260px;
+	width: 70%;
+	max-width: 400px;
   background: #fff;
   transition: all 300ms;
 }
@@ -11,8 +13,9 @@
 .sidebar-backdrop {
   .position(fixed, 0, 0, 0, 0);
   z-index: 9997;
-  visibility: hidden;
-  transition: all 300ms easy-out;
+	// transform: translateX(100%);
+	opacity: 0;
+  transition: opacity 300ms;
   background-color: rgba(0,0,0,.2);
 }
 

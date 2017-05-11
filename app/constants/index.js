@@ -31,3 +31,7 @@ export const FETCH_PROJECTS = 'FETCH_PROJECTS';
 export const FETCH_PROJECT = 'FETCH_PROJECT';
 export const PROJECT_ADDED = 'PROJECT_ADDED';
 export const PROJECT_ADD_ERROR = 'PROJECT_ADD_ERROR';
+
+// navigation
+
+export const GET_MENU_LIST = 'GET_MENU_LIST';

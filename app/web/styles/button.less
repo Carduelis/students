@@ -2,8 +2,9 @@
   padding: @pad/2 @pad;
   // padding-top: .38em;
   // padding-bottom: .42em;
+	display: block;
   text-decoration: none;
-  color: @basic;
+  color: @base;
   border: none;
   background-color: transparent;
   border-radius: @pad/4;
@@ -61,9 +62,18 @@
       // margin-top: -.15em;
     }
   }
+	&-icon {
+		text-align: center;
+		svg {
+			font-size: 3em;
+		}
+		span {
+			display: block;
+		}
+	}
   &-fill {
     color: #fff;
-    background-color: @basic;
+    background-color: @base;
   }
   &:focus {
 
@@ -88,6 +98,13 @@
       background-color: @accent;
     }
   }
+	&-primary {
+		color: @text-base;
+		&.btn-fill {
+			color: #fff;
+			background-color: @text-base;
+		}
+	}
   &-danger {
     color: @danger;
     &.btn-fill {
