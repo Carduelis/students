@@ -8,6 +8,10 @@
 	.btn {
 		height: 100%;
 		width: @pad*7;
+		@media (max-width: @phone-tiny) {
+			width: @pad*6;
+			padding: @pad/4;
+		}
 		overflow: hidden;
 		color: @text-base;
 		svg {
@@ -30,9 +34,6 @@
 
 //////////////////////////////////////////
 
-.card-title {
-	margin-top: .2em;
-}
 .card-footer {
 	margin-top: @pad;
 }

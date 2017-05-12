@@ -1,0 +1,79 @@
+body, button, input {
+  font-family: 'PT Sans', "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+  font-size: 1em;
+  color: @text-base;
+}
+a {
+	color: @accent;
+}
+.small {
+	font-size: .85em;
+}
+.tiny {
+	font-size: .65em;
+}
+.silent {
+	opacity: .8;
+}
+.muted {
+	color: lighten(desaturate(@text-base, 100%),10%);
+}
+.right {
+	text-align: right;
+}
+.center {
+	text-align: center;
+}
+hr {
+	border: none;
+	height: 1px;
+	background-color: lighten(@text-base,50%);
+	&.separator {
+		margin: @pad 0;
+		height: 1px;
+	}
+}
+p {
+  margin: 0 0 .5em;
+  &.silent {
+    opacity: .8;
+  }
+  &.small {
+    font-size: .85em;
+  }
+}
+abbr {
+  cursor: help;
+  border-bottom: 1px dashed rgba(0,0,0,.2);
+}
+a.silent {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0,0,0,.2);
+  &:hover {
+    border-bottom-color: inherit;
+  }
+}
+h1, h2, h3 {
+	font-weight: 300;
+	margin: 0;
+}
+h1 {
+	font-size: 3em;
+}
+h2 {
+	font-size: 1.8em;
+}
+h3 {
+	font-size: 1.4em;
+}
+.title {
+  text-align: center;
+  color: desaturate(darken(@base,5%),15%);
+  margin: @pad/2 0;
+	margin-top: @pad;
+  padding: @pad/2 0;
+}
+.title-sm {
+  font-size: .85em;
+}

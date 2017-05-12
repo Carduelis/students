@@ -13,7 +13,7 @@ class CampusList extends Component {
 		const icon = <Icon />;
 		return (
 			<div className="item card-campus" key={item.label}>
-				<Card to={item.to} title={item.label} description={item.icon}>
+				<Card to={item.to} title={item.label} description={item.icon} classModifiers={'easy'}>
 					<footer className="card-footer">
 						<div className="grid">
 							<div className="item">

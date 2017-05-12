@@ -13,7 +13,7 @@ export function getMenuList() {
 				to: 'contacts'
 			}, {
 				label: 'Об университете',
-				icon: 'MdGoat',
+				icon: 'MdInfoOutline',
 				to: 'about'
 			}, {
 				label: 'Мероприятия',

@@ -11,10 +11,11 @@ export default function (ComposedComponent, options = {}) {
           <ComposedComponent {...this.props} />
         );
       }
-      if (options.replacementComponent === true) {
+			const Replacement = options.replacementComponent;
+      if (Replacement === true) {
           return (<div>Для просмотра необходимо авторизоваться</div>);
-      } else if (options.replacementComponent) {
-          return (<options.replacementComponent {...this.props} />);
+      } else if (Replacement) {
+          return (<Replacement {...this.props} />);
       }
       return null;
     }

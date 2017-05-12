@@ -407,7 +407,7 @@ Sidebar.defaultProps = {
   open: false,
   transitions: true,
   touch: true,
-  touchHandleWidth: 20,
+  touchHandleWidth: 30,
   pullRight: false,
   shadow: true,
   dragToggleDistance: 30,

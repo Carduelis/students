@@ -2,18 +2,32 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import MdKeyboardArrowRight from 'react-icons/lib/md/keyboard-arrow-right';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import ClassName from '../helpers/ClassName';
 
-
+const transition = {
+	transitionName: 'fade',
+	transitionEnterTimeout: 500,
+	transitionLeaveTimeout: 300,
+	transitionAppear: true,
+	transitionAppearTimeout: 450
+};
 export default class Card extends Component {
 	render() {
-		const transition = {
-			transitionName: 'fade',
-			transitionEnterTimeout: 500,
-			transitionLeaveTimeout: 300,
-			transitionAppear: true,
-			transitionAppearTimeout: 300
-		};
-		const { cover, title, description, children, to, thumbnail } = this.props;
+		const className = new ClassName('card');
+		const {
+			to,
+			title,
+			description,
+			cover,
+			children,
+			thumbnail,
+			light,
+			classModifiers
+		} = this.props;
+		if (light) className.push('light');
+		if (typeof classModifiers === 'string') {
+			classModifiers.split(' ').map(item => className.push(item));
+		}
 		const cardContent = [];
 		if (thumbnail || cover) {
 			let img = false;
@@ -42,8 +56,8 @@ export default class Card extends Component {
 				</ReactCSSTransitionGroup>
 			);
 		if (to) {
-			return (<Link to={to} className="card">{animatedContent}</Link>);
+			return (<Link to={to} className={className.getClass()}>{animatedContent}</Link>);
 		}
-			return (<div className="card">{animatedContent}</div>);
+			return (<div className={className.getClass()}>{animatedContent}</div>);
 	}
 }

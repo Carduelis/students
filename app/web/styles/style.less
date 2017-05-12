@@ -1,15 +1,29 @@
 // get the page ready
+@phone-tiny: 340px;
+@media_phone-tiny: ~"only screen and (max-width: 340px)";
+@media_phone-tiny-p: ~"only screen and (max-width: 340px) and (orientation: portrait)";
+@media_phone-tiny-l: ~"only screen and (max-width: 340px) and (orientation: landscape)";
+
+@media_phone-plus: ~"only screen and (min-width: 400px)";
+@media_phone-plus-p: ~"only screen and (min-width: 400px) and (orientation: portrait)";
+@media_phone-plus-l: ~"only screen and (min-width: 400px) and (orientation: landscape)";
+@media_phone: ~"only screen and (max-width: 479px)";
+@phone: 360px;
+@phone-plus: 380px;
+@tablet-tiny: 420px;
 * { outline: none; box-sizing: border-box; }
 body { padding: 0; margin: 0; background: #ccc;}
+html {
+	font-size: 16px;
+	@media @media_phone-tiny-p {
+		font-size: 14px;
+	}
+	@media @media_phone-plus {
+		font-size: 18px;
+	}
+}
 // html, body, .react-native-web { height: 100%; width: 100%; position: absolute; top: 0; right: 0; overflow: hidden;}
-body, button, input {
-  font-family: 'PT Sans', "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
-  font-size: 1em;
-  color: @text-base;
-}
-a {
-	color: @accent;
-}
+
 html, body {
 	overflow: hidden;
 	height: 100%;
@@ -57,15 +71,6 @@ h1,h2,h3,h4,h5,h6 {
   line-height: 1.2em;
   font-weight: 300;
 }
-p {
-  margin: 0 0 .5em;
-  &.silent {
-    opacity: .8;
-  }
-  &.small {
-    font-size: .85em;
-  }
-}
 @pad: 1rem;
 
 .accent-coloring() {
@@ -98,41 +103,8 @@ p {
 }
 .content {
   padding: @pad;
-  margin-bottom: @pad;
 }
 
-abbr {
-  cursor: help;
-  border-bottom: 1px dashed rgba(0,0,0,.2);
-}
-a.silent {
-  color: inherit;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(0,0,0,.2);
-  &:hover {
-    border-bottom-color: inherit;
-  }
-}
-header.centered {
-  text-align: center;
-  color: desaturate(darken(@base,25%),15%);
-  margin: @pad/2 0;
-  padding: @pad/2 0;
-  h1 {
-    font-size: 3em;
-    font-weight: 300;
-  }
-  h2 {
-    font-size: 1.8em;
-    font-weight: 300;
-    color: desaturate(darken(@base,15%),15%);
-  }
-  h3 {
-    font-size: 1.4em;
-    font-weight: 300;
-    color: desaturate(darken(@base,15%),15%);
-  }
-}
 .icon-lg {
   font-size: 2em;
 }
@@ -260,7 +232,7 @@ header.centered {
 
 // let the real CSS begin
 .react-native-web {
-	
+
   // justify-content: center;
   // display: flex;
   // flex-direction: column;
@@ -290,23 +262,32 @@ header.centered {
 .fade-enter {
   filter: grayscale(100%);
   opacity: 0;
+	border: 1px solid red;
 }
 .fade-enter-active {
   opacity: 1;
   filter: grayscale(0);
   background: transparent;
-  transition: all 500ms ease-in;
+  transition: all 300ms linear;
 }
+
+
+
 .fade-appear {
   filter: grayscale(100%);
   opacity: 0;
+	transform: translateX(1rem);
 }
 .fade-appear-active {
   opacity: 1;
   filter: grayscale(0);
-  background: transparent;
-  transition: all 500ms ease-in;
+	transform: translateX(0);
+	transition: all 400ms cubic-bezier(.58,.02,.71,.3);
+	transition: all 400ms cubic-bezier(.58,.02,.7,.88);
+	background: transparent;
 }
+
+
 
 .bump-enter {
   transform: translateY(-100%);
@@ -401,10 +382,6 @@ header.centered {
       transform: translateX(200%) scale(1,1);
     }
 }
-.title-sm {
-  font-size: .85em;
-}
-
 
 .pointer {
   cursor: pointer;
@@ -412,9 +389,21 @@ header.centered {
 .row {
   overflow: hidden;
 }
+.lighten_rel(@prop, @color, @amount) {
+    @{prop}: lighten(@color, lightness(@color) * @amount);
+}
+.darken_rel(@prop, @color, @amount) {
+    @{prop}: darken(@color, lightness(@color) + @amount);
+}
+.justify-content {
+	display: flex;
+	justify-content: space-between;
+}
+
 @import "variables.less";
 @import "kek.less";
 @import "color.less";
+@import "typography.less";
 @import "grid.less";
 @import "grid_bootstrap.less";
 @import "modal.less";
@@ -429,3 +418,4 @@ header.centered {
 
 // @import "iphone.less";
 @import "project.less";
+@import "project/sidebar.less";

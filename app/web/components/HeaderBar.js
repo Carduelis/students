@@ -33,7 +33,7 @@ export default class extends Component {
     props.right.icon = props.right.icon ? <props.right.icon size={32} /> : <MdSearch size={32} />;
     const headerBarProps = {
       left: <Button {...buttonProps} {...props.left} />,
-      center: <span>Welcome to my site!</span>,
+      center: <span><nobr>Московский технологический</nobr> университет <span className="tiny silent muted">(МИРЭА, МГУПИ, МИТХТ)</span></span>,
       right: <Button {...buttonProps} {...props.right} />,
     };
     return (
