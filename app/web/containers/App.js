@@ -6,9 +6,12 @@ import Main from '../components/Main';
 import Test from '../components/Test';
 import ProjectPage from '../containers/ProjectPage';
 import AboutPage from '../components/AboutPage';
+import NewsPage from '../components/NewsPage';
+import NewsArticlePage from '../containers/NewsArticlePage';
 import EventsPage from '../components/EventsPage';
 import NotFoundPage from '../components/NotFoundPage';
 import CampusPage from '../containers/CampusPage';
+import TypographyPage from '../components/TypographyPage';
 import SidebarNavigation from '../containers/SidebarNavigation';
 import SidebarBottom from '../components/SidebarBottom';
 import Contacts from '../components/Contacts';
@@ -40,7 +43,7 @@ class App extends Component {
   }
   render() {
     // injected by connect call
-    const { interfaceState } = this.props;
+    const { interfaceState, navigation } = this.props;
     const sidebar = (
       <div>
         <HeaderBarSubstrate />
@@ -50,26 +53,59 @@ class App extends Component {
       </div>
     );
     // <NavListContainer />
-
-    return (
-      <Router>
-        <div className="react-native-web">
-          <Header />
-          <Sidebar
-            rootClassName="root"
-            sidebarClassName="sidebar"
-            overlayClassName="sidebar-backdrop"
-            sidebar={sidebar}
-            // open={this.state.sidebarOpen}
-            open={interfaceState.sidebarVisibility}
-            onSetOpen={this.onSetSidebarOpen}
-          />
-          <MainWrapper>
-            <Route exact path='/' component={Main} />
+		const Center = () => (
+			<div>
+				<span className="title">{navigation.title}</span>
+				{ navigation.subtitle &&
+					<div className="small muted silent">
+						{navigation.subtitle}
+					</div>
+				}
+			</div>
+		);
+		const headerProps = {
+			center: !navigation.title ? false : <Center />
+		};
+		return (
+			<Router>
+				<div className="react-native-web">
+					<Header {...headerProps} />
+					<Sidebar
+						rootClassName="root"
+						sidebarClassName="sidebar"
+						overlayClassName="sidebar-backdrop"
+						sidebar={sidebar}
+						// open={this.state.sidebarOpen}
+						open={interfaceState.sidebarVisibility}
+						onSetOpen={this.onSetSidebarOpen}
+					/>
+					<MainWrapper>
 						<Switch>
+							<Route exact path='/' component={Main} />
 							<Route path='/contacts' component={Contacts} />
 							<Route path='/campuses/:id' component={CampusPage} />
-							<Route path='/news' component={Test} />
+							<Route path='/typo' component={TypographyPage} />
+							<Route
+								location={location}
+								key={location.key}
+								exact
+								path='/news/page/:page'
+								component={NewsPage}
+							/>
+							<Route
+								location={location}
+								key={location.key}
+								exact
+								path='/news'
+								component={NewsPage}
+							/>
+							<Route
+								location={location}
+								key={location.key}
+								path='/news/:id'
+								component={NewsArticlePage}
+							/>
+							<Route path='/test' component={Test} />
 							<Route path='/projects' component={ProjectsList} />
 							<Route path='/about' component={AboutPage} />
 							<Route path='/events' component={EventsPage} />
@@ -77,11 +113,11 @@ class App extends Component {
 							<Route path='/projects/:id' component={ProjectPage} />
 							<Route component={NotFoundPage} />
 						</Switch>
-          </MainWrapper>
-            <AuthModal />
-        </div>
-      </Router>
-    );
+					</MainWrapper>
+					<AuthModal />
+				</div>
+			</Router>
+		);
   }
 }
 

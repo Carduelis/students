@@ -12,7 +12,7 @@
 @phone-plus: 380px;
 @tablet-tiny: 420px;
 * { outline: none; box-sizing: border-box; }
-body { padding: 0; margin: 0; background: #ccc;}
+body { padding: 0; margin: 0; }
 html {
 	font-size: 16px;
 	@media @media_phone-tiny-p {
@@ -23,7 +23,19 @@ html {
 	}
 }
 // html, body, .react-native-web { height: 100%; width: 100%; position: absolute; top: 0; right: 0; overflow: hidden;}
-
+.unsel {
+	user-select: none;
+}
+a.block {
+	display: block;
+	text-decoration: inherit;
+	color: inherit;
+}
+.ellipsis {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
 html, body {
 	overflow: hidden;
 	height: 100%;
@@ -271,7 +283,15 @@ h1,h2,h3,h4,h5,h6 {
   transition: all 300ms linear;
 }
 
+.kek-enter {
+  opacity: 0;
+  z-index: 1;
+}
 
+.kek-enter.kek-enter-active {
+  opacity: 1;
+  transition: opacity 250ms ease-in;
+}
 
 .fade-appear {
   filter: grayscale(100%);
@@ -411,11 +431,14 @@ h1,h2,h3,h4,h5,h6 {
 @import "breadcrumbs.less";
 @import "input.less";
 @import "sidebar.less";
+@import "alert.less";
 @import "card.less";
 @import "button.less";
 @import "button-group.less";
 @import "headerBar.less";
+@import "pagination.less";
 
 // @import "iphone.less";
 @import "project.less";
 @import "project/sidebar.less";
+@import "project/news.less";

@@ -5,6 +5,7 @@ import ProjectsReducer from './Projects';
 import ProjectsSortedKeysReducer from './Projects_sortedKeys';
 import NavigationReducer from './Navigation_reducer';
 import ProjectReducer from './Project_reducer';
+import NewsReducer from './News_reducer';
 import InterfaceReducer from './Interface_reducer';
 import Auth from './Auth';
 
@@ -22,7 +23,8 @@ const rootReducer = combineReducers({
   project: ProjectReducer,
   auth: Auth,
   interfaceState: InterfaceReducer,
-  navigation: NavigationReducer
+  navigation: NavigationReducer,
+  news: NewsReducer
 });
 
 // const initialState = {

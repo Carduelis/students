@@ -1,5 +1,16 @@
+@color: lighten(@background-base, 7%);
+
 .breadcrumbs {
 	margin: @pad/2 0;
+	display: flex;
+	padding-bottom: 1px;
+	overflow: hidden;
+	position: relative;
+	margin-right: -@pad;
+	padding: @pad/2 @pad*0.9;
+	margin: -@pad/2 -@pad*2 @pad;
+	background: @color;
+	// padding: 0 @pad/2;
 	.inner {
 		white-space: nowrap;
 		padding: @pad/2 0;
@@ -7,11 +18,18 @@
 	a {
 		text-decoration: none;
 	}
+	&::after {
+		content: '';
+		background: linear-gradient(to right, fadeout(@color, 100%), @color);
+		.position();
+		left: auto;
+		width: @pad*2;
+	}
 }
 
 .breadcrumb {
-	@space: @pad/2;
-	display: inline-block;
+	@space: @pad/3;
+	white-space: nowrap;
 	font-size: .85em;
 	margin-right: @space;
 	> span, > a {
@@ -32,12 +50,17 @@
 	&::after {
 		content: '';
 		height: 1px;
-		width: 0.4em;
+		width: 0.3em;
+		height: 0.3em;
+		border-radius: 50%;
 		margin-top: 2px;
 		vertical-align: middle;
 		display: inline-block;
 		background: desaturate(@accent-semilight,70%);
 		margin-left: @space;
+	}
+	&-text {
+
 	}
 	&-back {
 		a {

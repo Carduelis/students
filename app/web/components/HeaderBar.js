@@ -8,6 +8,13 @@ import ButtonGroup from '../common/ButtonGroup';
 
 export default class extends Component {
   render() {
+		const DefaultCenter = (
+			<span>
+				<nobr>Московский технологический</nobr><span> университет </span>
+				<nobr className="tiny silent muted">(МИРЭА, МГУПИ, МИТХТ)</nobr>
+			</span>
+		);
+		const Center = this.props.center || DefaultCenter;
     const buttonProps = {
       size: 'sm',
       transparent: true,
@@ -29,16 +36,18 @@ export default class extends Component {
     };
     //<ButtonGroup {...buttonGroupProps} />
     const { props } = this;
+
     props.left.icon = props.left.icon ? <props.left.icon size={32} /> : <MdMenu size={32} />;
     props.right.icon = props.right.icon ? <props.right.icon size={32} /> : <MdSearch size={32} />;
     const headerBarProps = {
       left: <Button {...buttonProps} {...props.left} />,
-      center: <span><nobr>Московский технологический</nobr> университет <span className="tiny silent muted">(МИРЭА, МГУПИ, МИТХТ)</span></span>,
+      center: Center,
       right: <Button {...buttonProps} {...props.right} />,
     };
+		console.warn(headerBarProps);
     return (
       <HeaderBarSubstrate>
-        <HeaderBar fixed {...headerBarProps} />
+				<HeaderBar fixed {...headerBarProps} />
       </HeaderBarSubstrate>
     );
   }

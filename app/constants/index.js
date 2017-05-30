@@ -26,6 +26,8 @@ export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
 export const GET_FILE_URL = 'GET_FILE_URL';
 export const GET_FILE_URL_ERROR = 'GET_FILE_URL_ERROR';
 
+export const FETCH_NEWS = 'FETCH_NEWS';
+
 // PROJECTS
 export const FETCH_PROJECTS = 'FETCH_PROJECTS';
 export const FETCH_PROJECT = 'FETCH_PROJECT';

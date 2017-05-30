@@ -29,7 +29,7 @@ class Header extends Component {
     const { sidebarVisibility } = props;
     const { isAuthenticated, isFetching, user } = props.auth;
     const barProps = {
-      headerText: 'Главная',
+      center: props.center,
       left: {
         icon: sidebarVisibility ? MdClose : MdMenu,
         handleClick: this.props.toggleSidebar

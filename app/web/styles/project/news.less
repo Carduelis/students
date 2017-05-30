@@ -1,0 +1,96 @@
+
+
+.news-filter {
+	> span {
+		margin-right: @pad;
+	}
+}
+
+.news-list {
+	margin: 0 -@pad;
+	perspective: 800px;
+}
+.news-item {
+	// border-bottom: 1px solid rgba(0,0,0,.1);
+	position: relative;
+	background: #fff;
+	margin: @pad 0;
+	border-radius: @pad/4;
+	box-shadow: 0 0 @pad*2 -@pad @text-base, inset 0 0 0 1px rgba(0,0,0,0.05);
+	transition: all 150ms;
+	&:last-child {
+		border-bottom: none;
+	}
+	padding: @pad;
+	padding-right: @pad*2;
+	h3 {
+
+	}
+	&:active, &.active {
+		transition: all 150ms;
+		box-shadow: 0 0 0 -@pad @text-base, inset 0 0 0 1px rgba(0,0,0,0.0);
+		background-color: transparent;
+		.arrow {
+			transform: translateX(10px);
+			opacity: 0;
+		}
+	}
+	.arrow {
+		.position();
+		transition: all 150ms;
+		left: auto;
+		display: flex;
+		align-items: center;
+		padding-right: @pad/2;
+		opacity: .6;
+	}
+	&-dumb {
+		padding-right: @pad;
+		span {
+			background-color: #ddd;
+			width: 4em;
+			display: inline-block;
+			margin-right: 0.2em;
+			height: 1em;
+			&:nth-of-type(2n+3) {width: 1em;}
+			&:nth-of-type(3n+1) {width: 3em;}
+			&:nth-of-type(4n+1) {width: 5em;}
+		}
+		p span {
+			opacity: .5;
+		}
+	}
+	p {
+
+	}
+}
+
+.ni-appear {
+  opacity: 0.01;
+	// transform-style: preserve-3d;
+	transform: rotate3d(1, 0, 0, 1deg);
+	// transition: all 300ms ease-in;
+}
+.ni-appear-active {
+	transform: rotate3d(0, 0, 0, 0deg);
+	opacity: 1;
+	transition: all 300ms ease-in;
+}
+
+.ni-enter.ni-enter-active {
+	transition: all 300ms ease-in;
+}
+.ni-enter {
+	background: green;
+}
+.ni-leave {
+	transition: all 300ms ease-in;
+  opacity: 0.01;
+	background: green;
+}
+
+.ni-leave-active {
+  opacity: 1;
+	background: red;
+  transition: all 300ms ease-in;
+}

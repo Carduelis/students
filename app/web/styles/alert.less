@@ -1,0 +1,72 @@
+.alert {
+	@icon-width: @pad*3;
+	background-color: @background-base;
+	border: 1px solid;
+	border-color: darken(@background-base, 10%);
+	border-radius: @pad/4;
+	// padding: 0 @pad;
+	padding-left: @icon-width - @pad;
+	position: relative;
+	&-sm {
+		.small;
+	}
+	.content {
+		padding-top: @pad/2;
+		padding-bottom: @pad/2;
+	}
+	&-danger {
+		background-color: @background-danger;
+		border-color: darken(@background-danger, 10%);
+		color: @danger;
+	}
+	&-success {
+		background-color: @background-success;
+		border-color: darken(@background-success, 10%);
+		color: @success;
+	}
+	&-warning {
+		background-color: @background-warning;
+		border-color: darken(@background-warning, 10%);
+		color: darken(@warning, 10%);
+	}
+	&-base {
+		background-color: @background-base;
+		border-color: darken(@background-base, 10%);
+		color: @base;
+	}
+	&-margin {
+		margin: @pad 0;
+	}
+	&-icon {
+		.position();
+		right: auto;
+		font-size: 1.4em;
+		width: @icon-width;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		&-background {
+			.position();
+			z-index: 0;
+			opacity: .05;
+			font-size: 10rem;
+			svg {
+				.position();
+				top: -0.2em;
+				left: -0.2em;
+			}
+			overflow: hidden;
+		}
+	}
+	&-close {
+		.position();
+		z-index: 3;
+		padding: @pad/4;
+		left: auto;
+		bottom: auto;
+		color: inherit;
+	}
+	&-iconless {
+
+	}
+}

@@ -8,6 +8,18 @@ export function getMenuList() {
     type: GET_MENU_LIST,
 		payload: [
 			{
+				label: 'Typography',
+				icon: 'MdFontDownload',
+				to: 'typo'
+			}, {
+				label: 'Test',
+				icon: 'MdBusiness',
+				to: 'projects'
+			}, {
+				label: 'Новости',
+				icon: 'MdBusiness',
+				to: 'news'
+			}, {
 				label: 'Кампуса и контакты',
 				icon: 'MdBusiness',
 				to: 'contacts'

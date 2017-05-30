@@ -4,6 +4,7 @@ export default class HeaderBar extends Component {
   render() {
     const { props } = this;
     const headerBarClass = props.fixed ? 'header-bar fixed' : 'header-bar';
+		console.warn(...props);
     return (
       <div className={headerBarClass}>
         {props.left &&
